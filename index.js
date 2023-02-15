@@ -39,10 +39,11 @@ parallelButton.addEventListener('click', () => {
         
         function openTabs(currentUrlStr) {
             const currentUrl = new URL(currentUrlStr);
-            const currentPage = new Number(currentUrl.searchParams.get('wr_page'));
+            const currentPageNum = new Number(currentUrl.searchParams.get('wr_page'));
             const totalPageNum = new Number(document.getElementById('total').innerText);
-            for (let i = currentPage + 1; i < totalPageNum + 1; i++) {
-                window.open(currentUrl.protocol + '//' + currentUrl.host + currentUrl.pathname + `?wr_page=${i}`);
+            for (let i = currentPageNum + 1; i < totalPageNum + 1; i++) {
+                const nextUrl = currentUrl.protocol + '//' + currentUrl.host + currentUrl.pathname + `?wr_page=${i}`;
+                window.open(nextUrl);
             }
         }
 
